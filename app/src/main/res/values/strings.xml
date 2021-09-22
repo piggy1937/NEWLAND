@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">NewLand</string>
+    <string name="requestId">申请单号</string>
+</resources>

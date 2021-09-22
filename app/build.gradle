@@ -1,0 +1,67 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        applicationId "com.tech.newland"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+        defaultConfig {
+            ndk {
+                // 设置支持的SO库架构
+                abiFilters 'armeabi-v7a'//, 'x86_64', 'arm64-v8a'
+            }
+
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //material组件
+    api 'com.google.android.material:material:1.1.0-alpha10'
+
+    //navigation导航
+    api 'androidx.navigation:navigation-fragment:2.1.0'
+    api 'androidx.navigation:navigation-ui:2.1.0'
+    //lombok
+    implementation "org.projectlombok:lombok:1.16.18"
+    implementation 'org.glassfish:javax.annotation:10.0-b28'
+    implementation 'com.zhy:percent-support-extends:1.1.1'
+//    implementation 'com.lzy.widget:imagepicker:0.6.1'
+    implementation 'org.jetbrains:annotations:15.0'
+    implementation 'com.zhihu.android:matisse:0.5.3-beta3'
+    //rxjava3
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.6'
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    implementation 'com.jakewharton.rxbinding3:rxbinding:3.1.0'
+
+    compile 'com.squareup.retrofit2:retrofit:2.0.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0'
+    compile 'org.greenrobot:eventbus:3.0.0'
+    implementation "com.squareup.retrofit2:adapter-rxjava3:2.9.0"
+
+}
